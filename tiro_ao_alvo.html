@@ -6,8 +6,24 @@
 	</head>
 
 	<body>
+		<div align="center">
+			<canvas id="tela" width="600" height="400"></canvas>
+		</div>
 		<script type="text/javascript">
 		//TODO https://www.alura.com.br/course/logica-2/section/5
+			var tela = document.getElementById("tela");
+			var c = tela.getContext("2d");
+
+			var cor = function(color){
+				c.fillStyle = color;
+			}
+
+			var circulo = function(x,y,raio){
+				c.beginPath();
+				c.arc(x,y,raio,0,2*Math.PI);
+				c.fill();
+			}
+
 			var desenhaAlvo = function(x, y) {
 			    var raio = 40;
 			    cor("white");
@@ -20,6 +36,13 @@
 			    circulo(x, y, raio-30);
 			};
 
+			var sorteia = function(reach){
+				return Math.round(Math.random() * ((reach) - 1) + 1);
+			}
+
+			var limpa = function(){
+				c.clearRect(0,0,600,400);
+			}
 
 			var alvoX;
 			var alvoY;
@@ -29,6 +52,10 @@
 				alvoY = sorteia(400);
 				desenhaAlvo(alvoX, alvoY);
 			};
+
+			setInterval(desenha, 300);
+
+
 		</script>
 	</body>
 </html>
