@@ -5,7 +5,7 @@
 	<head>
 		<META charset="UTF-8"/>
 		<link rel="shortcut icon" href="img/alvo.png"/>
-		<title>Tiro ao Alvo</title>
+		<title>Fastarget - game</title>
 	</head>
 
 	<body>
@@ -16,7 +16,7 @@
 			<br>
 			<canvas id="tela" width="1200" height="700"></canvas>
 			<h2>Quanto menos cliques, melhor sua pontuação</h2>
-			<p>Criador: Cayo Aguiar do Nascimento | Versão Beta: 1.0.0</p>
+			<p>Criador: Cayo Aguiar do Nascimento | Versão Beta: 1.0.1</p>
 		</div>
 		<script type="text/javascript">
 			var tela = document.getElementById("tela");
@@ -29,7 +29,7 @@
 			var alvoX;//Posição do alvo em relação ao eixo X.
 			var alvoY;//Posição do alvo em relação ao eixo Y.
 			
-			var tempoAlvo = 300;//Variável responsável pela velocidade de mudança do alvo em (milisegundos).
+			var tempoAlvo = 1000;//Variável responsável pela velocidade de mudança do alvo em (milisegundos).
 			var contClick = 0;
 			
 			var cor = function(color){
@@ -63,6 +63,7 @@
 				contClick++;
 				
 				if((mouseX > alvoX - raio) && (mouseX < alvoX + raio) && (mouseY > alvoY - raio) && (mouseY < alvoY + raio)){
+					clearInterval(intervalId);
 					limpa();
 					alert("Parabéns, vc acertou o alvo!\nCliques até acertar: "+contClick+" clique(s).");
 					window.location.href="index.html"
@@ -89,7 +90,7 @@
 			};
 			
 			desenhaMoldura();
-			setInterval(desenha, tempoAlvo);
+			var intervalId = setInterval(desenha, tempoAlvo);
 			tela.onclick = acerto;
 		</script>
 	</body>
