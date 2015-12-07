@@ -3,8 +3,31 @@
 	margin-left: 10px;
 }
 
+body{
+  background: url(../img/bg.jpg) no-repeat center center fixed;
+  background-size: cover; /*Css padrão*/
+  -webkit-background-size: cover; /*Css safari e chrome*/
+  -moz-background-size: cover; /*Css firefox*/
+  -ms-background-size: cover; /*Css IE não use mer#^@%#*/
+  -o-background-size: cover; /*Css Opera*/
+}
+
 #version{
 	color: red;
+	text-decoration: underline red;
+}
+
+#underConstructionImg{
+	width: 800px;
+	height: 600px;
+}
+
+#mainTitle{
+	margin-bottom: 50px;
+}
+
+#botaoJogar{
+	margin-top: 75px;
 }
 
 #botaoHome:hover{

@@ -23,7 +23,10 @@ var circulo = function(x,y,raio){
 	c.arc(x,y,raio,0,2*Math.PI);
 	c.fill();
 };
-			
+var desenhaTela = function(){
+	cor("white");
+	c.fillRect(0,0,telaX,telaY);
+}			
 var desenhaMoldura = function(){
 	c.strokeRect(0,0,telaX,telaY);
 }
@@ -49,6 +52,8 @@ var acerto = function(evento){
 		alvoX = null;
 		alvoY = null;
 		limpa();
+		desenhaTela();
+		desenhaMoldura();
 		alert("Parabéns, vc acertou o alvo!\nCliques até acertar: "+contClick+" clique(s).");
 		c.drawImage(restartScreen,0,0,telaX,telaY);
 		contClick = 0;
@@ -67,10 +72,12 @@ var desenha = function() {
 	limpa();
 	alvoX = sorteia(telaX);
 	alvoY = sorteia(telaY);
+	desenhaTela();
 	desenhaAlvo(alvoX, alvoY);
 	desenhaMoldura();
 };
-			
+
+desenhaTela();			
 desenhaMoldura();
 var intervalId = setInterval(desenha, tempoAlvo);
 tela.onclick = acerto;
